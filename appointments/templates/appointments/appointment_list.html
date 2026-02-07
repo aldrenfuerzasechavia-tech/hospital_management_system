@@ -1,0 +1,58 @@
+{% extends 'appointments/base.html' %}
+
+{% block title %}Appointments - Hospital Management System{% endblock %}
+
+{% block content %}
+<div>
+    <h2 style="color: #333; margin-bottom: 20px; font-size: 2em;">
+        📅 Appointment Records
+    </h2>
+    
+    <a href="{% url 'appointment_create' %}" class="btn btn-add">➕ Add New Appointment</a>
+
+    {% if appointments %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Patient Name</th>
+                <th>Doctor Name</th>
+                <th>Specialization</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment.appointment_id }}</td>
+                <td><strong>{{ appointment.patient.patient_name }}</strong></td>
+                <td><strong>Dr. {{ appointment.doctor.doctor_name }}</strong></td>
+                <td>{{ appointment.doctor.specialization }}</td>
+                <td>{{ appointment.appointment_date }}</td>
+                <td>{{ appointment.appointment_time }}</td>
+                <td class="actions-column">
+                    <a href="{% url 'appointment_update' appointment.appointment_id %}" class="btn btn-update">
+                        ✏️ Update
+                    </a>
+                    <form action="{% url 'appointment_delete' appointment.appointment_id %}" method="POST" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-delete" 
+                                onclick="return confirmDelete('Appointment #{{ appointment.appointment_id }}', 'appointment')">
+                            🗑️ Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="empty-message">
+        <p>📋 No appointments found.</p>
+        <p>Click "Add New Appointment" to create your first appointment.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
