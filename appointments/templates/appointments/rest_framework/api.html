@@ -1,0 +1,59 @@
+{% extends "rest_framework/base.html" %}
+
+{% block style %}
+    {{ block.super }}
+    <style>
+        .back-to-site {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 9999;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white !important;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none !important;
+            font-weight: 700;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .back-to-site:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+            text-decoration: none !important;
+            color: white !important;
+        }
+        
+        .back-to-site:active {
+            transform: translateY(-1px);
+        }
+        
+        .navbar {
+            margin-top: 60px !important;
+        }
+        
+        body {
+            padding-top: 20px;
+        }
+        
+        .back-icon {
+            font-size: 20px;
+            line-height: 1;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <a href="/" class="back-to-site">
+        <span class="back-icon">🏠</span>
+        <span>Back to Hospital Management System</span>
+    </a>
+    {{ block.super }}
+{% endblock %}

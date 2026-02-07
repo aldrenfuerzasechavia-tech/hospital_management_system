@@ -9,8 +9,8 @@ router.register(r'doctors', views.DoctorViewSet, basename='doctor-api')
 router.register(r'appointments', views.AppointmentViewSet, basename='appointment-api')
 
 urlpatterns = [
-    # Web URLs (HTML Pages)
-    path('', views.PatientListView.as_view(), name='patient_list'),
+    # Home page redirects to patients list
+    path('', views.PatientListView.as_view(), name='home'),
     
     # Patient URLs
     path('patients/', views.PatientListView.as_view(), name='patient_list'),
@@ -30,6 +30,7 @@ urlpatterns = [
     path('appointments/<int:pk>/edit/', views.AppointmentUpdateView.as_view(), name='appointment_update'),
     path('appointments/<int:pk>/delete/', views.AppointmentDeleteView.as_view(), name='appointment_delete'),
     
-    # API URLs
+    # API URLs with custom root
+    path('api/', views.api_root, name='api-root'),
     path('api/', include(router.urls)),
 ]

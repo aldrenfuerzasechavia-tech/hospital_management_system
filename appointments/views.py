@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from rest_framework import viewsets
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.reverse import reverse as api_reverse
 from .models import Patient, Doctor, Appointment
 from .serializers import (
     PatientSerializer, 
@@ -12,7 +15,20 @@ from .serializers import (
 from .forms import PatientForm, DoctorForm, AppointmentForm
 
 
-# ========== WEB VIEWS (HTML Pages) ==========
+# API ROOT WITH CUSTOM TEMPLATE 
+
+@api_view(['GET'])
+def api_root(request, format=None):
+    """
+    Custom API root view with back button
+    """
+    return Response({
+        'patients': api_reverse('patient-api-list', request=request, format=format),
+        'doctors': api_reverse('doctor-api-list', request=request, format=format),
+        'appointments': api_reverse('appointment-api-list', request=request, format=format),
+    })
+    
+# WEB VIEWS (HTML Pages)
 
 # Patient Web Views
 class PatientListView(ListView):
