@@ -52,7 +52,7 @@ export default function DoctorList() {
         <div>
           <button
             onClick={() => { setEditingDoctor(null); setShowForm(true); }}
-            className="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600"
+            className="bg-indigo-500 text-white px-4 py-2 rounded shadow hover:bg-indigo-600"
           >
             ➕ Add New Doctor
           </button>
@@ -64,7 +64,7 @@ export default function DoctorList() {
       )}
 
       <div className="bg-white rounded-lg shadow overflow-hidden">
-        <div className="bg-gradient-to-r from-green-600 to-emerald-500 text-white px-6 py-3">
+        <div className="bg-gradient-to-r from-indigo-500 to-indigo-700 text-white px-6 py-3">
           <div className="grid grid-cols-5 gap-4 text-sm font-semibold">
             <div>ID</div>
             <div>Name</div>
@@ -89,11 +89,11 @@ export default function DoctorList() {
                     <td className="py-3 px-2 text-sm space-x-2">
                       <button
                         onClick={() => handleEdit(d)}
-                        className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
+                        className="bg-indigo-500 text-white px-3 py-1 rounded hover:bg-indigo-600"
                       >Update</button>
                       <button
                         onClick={() => handleDelete(d.doctor_id)}
-                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                        className="bg-red-400 text-white px-3 py-1 rounded hover:bg-red-500"
                       >Delete</button>
                     </td>
                   </tr>

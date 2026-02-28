@@ -7,7 +7,7 @@ function App() {
   const [activeTab, setActiveTab] = useState('patients');
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-400 to-purple-600 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-teal-300 to-indigo-400 py-12">
       <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-2xl p-8">
         <header className="text-center">
           <h1 className="text-4xl font-extrabold text-gray-800">CDO Medical Center</h1>
@@ -24,7 +24,7 @@ function App() {
             <button
               onClick={() => setActiveTab('patients')}
               className={`px-4 py-2 rounded-lg font-semibold shadow-sm ${
-                activeTab === 'patients' ? 'bg-indigo-500 text-white' : 'bg-white text-gray-700'
+                activeTab === 'patients' ? 'bg-teal-500 text-white' : 'bg-white text-gray-700'
               }`}
             >
               👥 Patients
@@ -32,7 +32,7 @@ function App() {
             <button
               onClick={() => setActiveTab('doctors')}
               className={`px-4 py-2 rounded-lg font-semibold shadow-sm ${
-                activeTab === 'doctors' ? 'bg-indigo-500 text-white' : 'bg-white text-gray-700'
+                activeTab === 'doctors' ? 'bg-teal-500 text-white' : 'bg-white text-gray-700'
               }`}
             >
               👨‍⚕️ Doctors
@@ -40,7 +40,7 @@ function App() {
             <button
               onClick={() => setActiveTab('appointments')}
               className={`px-4 py-2 rounded-lg font-semibold shadow-sm ${
-                activeTab === 'appointments' ? 'bg-indigo-500 text-white' : 'bg-white text-gray-700'
+                activeTab === 'appointments' ? 'bg-teal-500 text-white' : 'bg-white text-gray-700'
               }`}
             >
               📅 Appointments

@@ -53,7 +53,7 @@ export default function AppointmentList() {
         <div>
           <button
             onClick={() => { setEditingAppointment(null); setShowForm(true); }}
-            className="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600"
+            className="bg-cyan-500 text-white px-4 py-2 rounded shadow hover:bg-cyan-600"
           >
             ➕ Add New Appointment
           </button>
@@ -65,7 +65,7 @@ export default function AppointmentList() {
       )}
 
       <div className="bg-white rounded-lg shadow overflow-hidden">
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3">
+        <div className="bg-gradient-to-r from-cyan-500 to-indigo-600 text-white px-6 py-3">
           <div className="grid grid-cols-7 gap-4 text-sm font-semibold">
             <div>ID</div>
             <div>Patient Name</div>
@@ -94,7 +94,7 @@ export default function AppointmentList() {
                     <td className="py-3 px-2 text-sm space-x-2">
                       <button
                         onClick={() => handleEdit(a)}
-                        className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
+                        className="bg-cyan-500 text-white px-3 py-1 rounded hover:bg-cyan-600"
                       >Update</button>
                       <button
                         onClick={() => handleDelete(a.appointment_id)}

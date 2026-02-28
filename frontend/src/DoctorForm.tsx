@@ -101,7 +101,7 @@ export default function DoctorForm({ onSuccess, editingDoctor }: DoctorFormProps
       <button
         type="submit"
         disabled={loading}
-        className="mt-4 bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 disabled:bg-gray-400"
+        className="mt-4 bg-indigo-500 text-white px-6 py-2 rounded hover:bg-indigo-600 disabled:bg-gray-400"
       >
         {loading ? 'Saving...' : editingDoctor ? 'Update Doctor' : 'Add Doctor'}
       </button>

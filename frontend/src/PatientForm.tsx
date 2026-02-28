@@ -132,7 +132,7 @@ export default function PatientForm({ onSuccess, editingPatient }: PatientFormPr
       <button
         type="submit"
         disabled={loading}
-        className="mt-4 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 disabled:bg-gray-400"
+        className="mt-4 bg-teal-500 text-white px-6 py-2 rounded hover:bg-teal-600 disabled:bg-gray-400"
       >
         {loading ? 'Saving...' : editingPatient ? 'Update Patient' : 'Add Patient'}
       </button>
