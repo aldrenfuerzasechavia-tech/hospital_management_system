@@ -5,6 +5,7 @@ import AppointmentForm from './AppointmentForm';
 export default function AppointmentList() {
   const [appointments, setAppointments] = useState<any[]>([]);
   const [editingAppointment, setEditingAppointment] = useState<any>(null);
+  const [showForm, setShowForm] = useState<boolean>(false);
 
   const loadAppointments = () => {
     getAppointments()
@@ -32,10 +33,12 @@ export default function AppointmentList() {
 
   const handleEdit = (appointment: any) => {
     setEditingAppointment(appointment);
+    setShowForm(true);
   };
 
   const handleSuccess = () => {
     setEditingAppointment(null);
+    setShowForm(false);
     loadAppointments();
   };
 
@@ -49,7 +52,7 @@ export default function AppointmentList() {
 
         <div>
           <button
-            onClick={() => setEditingAppointment(null)}
+            onClick={() => { setEditingAppointment(null); setShowForm(true); }}
             className="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600"
           >
             ➕ Add New Appointment
@@ -57,7 +60,9 @@ export default function AppointmentList() {
         </div>
       </div>
 
-      <AppointmentForm onSuccess={handleSuccess} editingAppointment={editingAppointment} />
+      {showForm && (
+        <AppointmentForm onSuccess={handleSuccess} editingAppointment={editingAppointment} />
+      )}
 
       <div className="bg-white rounded-lg shadow overflow-hidden">
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3">
@@ -81,9 +86,9 @@ export default function AppointmentList() {
                 appointments.map(a => (
                   <tr key={a.appointment_id} className="border-b last:border-b-0">
                     <td className="py-3 px-2 text-sm">{a.appointment_id}</td>
-                    <td className="py-3 px-2 text-sm font-semibold">{a.patient_name}</td>
-                    <td className="py-3 px-2 text-sm">{a.doctor_name}</td>
-                    <td className="py-3 px-2 text-sm">{a.specialization || '—'}</td>
+                    <td className="py-3 px-2 text-sm font-semibold">{a.patient_details?.patient_name || '—'}</td>
+                    <td className="py-3 px-2 text-sm">{a.doctor_details?.doctor_name || '—'}</td>
+                    <td className="py-3 px-2 text-sm">{a.doctor_details?.specialization || '—'}</td>
                     <td className="py-3 px-2 text-sm">{a.appointment_date}</td>
                     <td className="py-3 px-2 text-sm">{a.appointment_time}</td>
                     <td className="py-3 px-2 text-sm space-x-2">

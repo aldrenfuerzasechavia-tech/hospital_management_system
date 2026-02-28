@@ -5,6 +5,7 @@ import DoctorForm from './DoctorForm';
 export default function DoctorList() {
   const [doctors, setDoctors] = useState<any[]>([]);
   const [editingDoctor, setEditingDoctor] = useState<any>(null);
+  const [showForm, setShowForm] = useState<boolean>(false);
 
   const loadDoctors = () => {
     getDoctors()
@@ -31,10 +32,12 @@ export default function DoctorList() {
 
   const handleEdit = (doctor: any) => {
     setEditingDoctor(doctor);
+    setShowForm(true);
   };
 
   const handleSuccess = () => {
     setEditingDoctor(null);
+    setShowForm(false);
     loadDoctors();
   };
 
@@ -48,7 +51,7 @@ export default function DoctorList() {
 
         <div>
           <button
-            onClick={() => setEditingDoctor(null)}
+            onClick={() => { setEditingDoctor(null); setShowForm(true); }}
             className="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600"
           >
             ➕ Add New Doctor
@@ -56,7 +59,9 @@ export default function DoctorList() {
         </div>
       </div>
 
-      <DoctorForm onSuccess={handleSuccess} editingDoctor={editingDoctor} />
+      {showForm && (
+        <DoctorForm onSuccess={handleSuccess} editingDoctor={editingDoctor} />
+      )}
 
       <div className="bg-white rounded-lg shadow overflow-hidden">
         <div className="bg-gradient-to-r from-green-600 to-emerald-500 text-white px-6 py-3">

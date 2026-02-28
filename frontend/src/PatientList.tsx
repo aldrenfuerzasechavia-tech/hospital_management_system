@@ -5,6 +5,7 @@ import PatientForm from './PatientForm';
 export default function PatientList() {
   const [patients, setPatients] = useState<any[]>([]);
   const [editingPatient, setEditingPatient] = useState<any>(null);
+  const [showForm, setShowForm] = useState<boolean>(false);
 
   const loadPatients = () => {
     getPatients()
@@ -31,10 +32,12 @@ export default function PatientList() {
 
   const handleEdit = (patient: any) => {
     setEditingPatient(patient);
+    setShowForm(true);
   };
 
   const handleSuccess = () => {
     setEditingPatient(null);
+    setShowForm(false);
     loadPatients();
   };
 
@@ -48,7 +51,7 @@ export default function PatientList() {
 
         <div>
           <button
-            onClick={() => setEditingPatient(null)}
+            onClick={() => { setEditingPatient(null); setShowForm(true); }}
             className="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600"
           >
             ➕ Add New Patient
@@ -56,7 +59,9 @@ export default function PatientList() {
         </div>
       </div>
 
-      <PatientForm onSuccess={handleSuccess} editingPatient={editingPatient} />
+      {showForm && (
+        <PatientForm onSuccess={handleSuccess} editingPatient={editingPatient} />
+      )}
 
       <div className="bg-white rounded-lg shadow overflow-hidden">
         <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3">

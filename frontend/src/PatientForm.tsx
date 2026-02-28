@@ -10,7 +10,7 @@ export default function PatientForm({ onSuccess, editingPatient }: PatientFormPr
   const [formData, setFormData] = useState({
     patient_name: editingPatient?.patient_name || '',
     age: editingPatient?.age || '',
-    sex: editingPatient?.sex || 'M',
+    sex: editingPatient?.sex || '',
     phone_number: editingPatient?.phone_number || '',
     address: editingPatient?.address || '',
   });
@@ -19,7 +19,7 @@ export default function PatientForm({ onSuccess, editingPatient }: PatientFormPr
     setFormData({
       patient_name: editingPatient?.patient_name || '',
       age: editingPatient?.age || '',
-      sex: editingPatient?.sex || 'M',
+      sex: editingPatient?.sex || '',
       phone_number: editingPatient?.phone_number || '',
       address: editingPatient?.address || '',
     });
@@ -45,7 +45,7 @@ export default function PatientForm({ onSuccess, editingPatient }: PatientFormPr
       setFormData({
         patient_name: '',
         age: '',
-        sex: 'M',
+        sex: '',
         phone_number: '',
         address: '',
       });
@@ -94,10 +94,12 @@ export default function PatientForm({ onSuccess, editingPatient }: PatientFormPr
             name="sex"
             value={formData.sex}
             onChange={handleChange}
-            className="w-full border border-gray-300 px-3 py-2 rounded"
+            required
+            className={`w-full border border-gray-300 px-3 py-2 rounded ${formData.sex === '' ? 'text-gray-400' : 'text-gray-800'}`}
           >
-            <option value="M">Male</option>
-            <option value="F">Female</option>
+            <option value="" disabled>Please select your sex</option>
+            <option value="M" className="text-black">Male</option>
+            <option value="F" className="text-black">Female</option>
           </select>
         </div>
 

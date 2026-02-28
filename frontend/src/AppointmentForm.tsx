@@ -82,11 +82,13 @@ export default function AppointmentForm({ onSuccess, editingAppointment }: Appoi
             value={formData.patient}
             onChange={handleChange}
             required
-            className="w-full border border-gray-300 px-3 py-2 rounded"
+            className={`w-full border border-gray-300 px-3 py-2 rounded ${
+              formData.patient ? 'text-black' : 'text-gray-500'
+            }`}
           >
-            <option value="">Select a patient</option>
+            <option value="" className="text-gray-500">Select a patient</option>
             {patients.map(p => (
-              <option key={p.patient_id} value={p.patient_id}>
+              <option key={p.patient_id} value={p.patient_id} className="text-black">
                 {p.patient_name}
               </option>
             ))}
@@ -100,11 +102,13 @@ export default function AppointmentForm({ onSuccess, editingAppointment }: Appoi
             value={formData.doctor}
             onChange={handleChange}
             required
-            className="w-full border border-gray-300 px-3 py-2 rounded"
+            className={`w-full border border-gray-300 px-3 py-2 rounded ${
+              formData.doctor ? 'text-black' : 'text-gray-500'
+            }`}
           >
-            <option value="">Select a doctor</option>
+            <option value="" className="text-gray-500">Select a doctor</option>
             {doctors.map(d => (
-              <option key={d.doctor_id} value={d.doctor_id}>
+              <option key={d.doctor_id} value={d.doctor_id} className="text-black">
                 {d.doctor_name} - {d.specialization}
               </option>
             ))}
@@ -119,7 +123,9 @@ export default function AppointmentForm({ onSuccess, editingAppointment }: Appoi
             value={formData.appointment_date}
             onChange={handleChange}
             required
-            className="w-full border border-gray-300 px-3 py-2 rounded"
+            className={`w-full border border-gray-300 px-3 py-2 rounded ${
+              formData.appointment_date ? 'text-black' : 'text-gray-500'
+            }`}
           />
         </div>
 
@@ -131,7 +137,9 @@ export default function AppointmentForm({ onSuccess, editingAppointment }: Appoi
             value={formData.appointment_time}
             onChange={handleChange}
             required
-            className="w-full border border-gray-300 px-3 py-2 rounded"
+            className={`w-full border border-gray-300 px-3 py-2 rounded ${
+              formData.appointment_time ? 'text-black' : 'text-gray-500'
+            }`}
           />
         </div>
 
