@@ -16,7 +16,7 @@ class DoctorSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Doctor
-        fields = ['doctor_id', 'doctor_name', 'specialization']
+        fields = ['doctor_id', 'doctor_name', 'specialization', 'phone_number', 'license_number']
         read_only_fields = ['doctor_id']
 
 
@@ -33,6 +33,7 @@ class AppointmentSerializer(serializers.ModelSerializer):
             'appointment_time', 
             'patient', 
             'doctor',
+            'reason_for_appointment',
             'patient_details',
             'doctor_details'
         ]
@@ -44,5 +45,5 @@ class AppointmentCreateSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Appointment
-        fields = ['appointment_id', 'appointment_date', 'appointment_time', 'patient', 'doctor']
+        fields = ['appointment_id', 'appointment_date', 'appointment_time', 'patient', 'doctor', 'reason_for_appointment']
         read_only_fields = ['appointment_id']

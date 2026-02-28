@@ -22,6 +22,8 @@ class Doctor(models.Model):
     doctor_id = models.AutoField(primary_key=True)
     doctor_name = models.CharField(max_length=200)
     specialization = models.CharField(max_length=200)
+    phone_number = models.CharField(max_length=20, null=True, blank=True)
+    license_number = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):
         return f"Dr. {self.doctor_name} - {self.specialization}"
@@ -45,6 +47,7 @@ class Appointment(models.Model):
         on_delete=models.CASCADE,
         db_column='doctor_id'
     )
+    reason_for_appointment = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return f"Appointment {self.appointment_id}: {self.patient.patient_name} with Dr. {self.doctor.doctor_name}"
