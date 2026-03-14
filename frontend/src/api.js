@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API = axios.create({ baseURL: 'http://127.0.0.1:8000/api/' });
 
-// Helper to extract results from paginated response
+// Mag extract ug results gikan sa paginated response
 const extractData = (response) => {
   // If response has 'results' (paginated), return that array
   if (response.data && response.data.results) {

@@ -10,7 +10,6 @@ export default function PatientList() {
   const loadPatients = () => {
     getPatients()
       .then(res => {
-        // Handle both direct array and paginated responses
         const data = Array.isArray(res.data) ? res.data : (res.data?.results || []);
         data.sort((a: any, b: any) => (a.patient_id ?? 0) - (b.patient_id ?? 0));
         setPatients(data);
@@ -95,7 +94,7 @@ export default function PatientList() {
                       >Update</button>
                       <button
                         onClick={() => handleDelete(p.patient_id)}
-                        className="bg-red-400 text-white px-3 py-1 rounded hover:bg-red-500"
+                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
                       >Delete</button>
                     </td>
                   </tr>

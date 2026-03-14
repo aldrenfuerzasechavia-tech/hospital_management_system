@@ -93,7 +93,7 @@ export default function DoctorList() {
                       >Update</button>
                       <button
                         onClick={() => handleDelete(d.doctor_id)}
-                        className="bg-red-400 text-white px-3 py-1 rounded hover:bg-red-500"
+                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
                       >Delete</button>
                     </td>
                   </tr>

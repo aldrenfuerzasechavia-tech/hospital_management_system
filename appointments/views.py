@@ -123,7 +123,7 @@ class AppointmentDeleteView(DeleteView):
         return self.delete(request, *args, **kwargs)
 
 
-# ========== API VIEWS (REST Framework) ==========
+# API VIEWS (REST Framework)
 
 class PatientViewSet(viewsets.ModelViewSet):
     """API endpoint for Patient CRUD operations"""
